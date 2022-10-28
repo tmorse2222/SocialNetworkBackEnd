@@ -27,7 +27,8 @@ module.exports = {
                 res.status(400).json(err);
             });
     },
-    createThought({ body }, res) {
+    // Create a thought and add it to the user's thoughts array field
+    createThought({ params, body }, res) {
         Thought.create(body)
             .then(({ _id }) => {
                 return User.findOneAndUpdate(
